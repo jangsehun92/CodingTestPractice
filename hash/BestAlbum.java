@@ -1,6 +1,8 @@
 package codingTest.hash;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class BestAlbum {
 	/*
@@ -16,7 +18,7 @@ public class BestAlbum {
 	public static void main(String[] args) {
 		
 		String[] genres = { "classic" , "pop", "classic", "classic", "pop", "jazz" };
-		int[] plays = { 500, 600, 150, 800, 2500, 100 };
+		int[] plays = { 11500, 600, 150, 800, 2500, 100 };
 		
 		System.out.println(solution(genres,plays));
 		
@@ -25,26 +27,55 @@ public class BestAlbum {
 	public static int[] solution(String[] genres, int[] plays) {
         int[] answer = {};
         
-        
         //answer = new int[hm.size()];
-        
-        //장르
-        HashMap<String, Integer> hm = new HashMap<String, Integer>();
+        HashMap<String, String> genreMap = new HashMap<String, String>();
         for(int i = 0; i < genres.length; i++) {
-        	hm.put(genres[i], hm.getOrDefault(genres[i], 0) +1);
+        	genreMap.put(genres[i], genreMap.getOrDefault(genres[i], "")+i);
         }
-        
-        System.out.println(hm);
+        System.out.println(genreMap);
+        //장르
+        HashMap<String, Integer> genreCountMap = new HashMap<String, Integer>();
+        for(int i = 0; i < genres.length; i++) {
+        	genreCountMap.put(genres[i], genreCountMap.getOrDefault(genres[i], 0) +1);
+        }
+        System.out.println(genreCountMap);
         
         HashMap<String, Integer> sumMap = new HashMap<String, Integer>();
+        
+
+        HashMap<String, Integer> orderMap = new HashMap<String, Integer>();
+        
         //1. 속한 노래가 많이 재생된 장르를 먼저 수록합니다.
-        for(String key : hm.keySet()) {
+        for(String key : genreCountMap.keySet()) {
         	sumMap.put(key, sum(key, genres, plays));
         }
         System.out.println(sumMap);
+        int count = 0;
+        for(String firstKey : genreCountMap.keySet()) {
+        	 for(String secondKey : genreCountMap.keySet()) {
+        		 if(firstKey.equals(secondKey)) {
+        			 continue;
+        		 }
+        		 if(genreCountMap.get(firstKey) > genreCountMap.get(secondKey)) {
+        			 count--;
+        		 }
+        	 }
+        	 orderMap.put(firstKey, count);
+        	 count=0;
+        }
         
+        System.out.println(orderMap);
         
-        
+       for(String key : genreMap.keySet()) {
+    	   if(genreMap.get(key).length() == 1) {
+    		   System.out.println(key + genreMap.get(key).charAt(0));
+    	   }else {
+    		   for(int i = 0; i < 2; i++) {
+    			   System.out.println(key + genreMap.get(key).charAt(i));
+    		   }
+    	   }
+       }
+       String keyValue = null;
         //2. 장르 내에서 많이 재생된 노래를 먼저 수록합니다.
         return answer;
     }
