@@ -1,6 +1,5 @@
 package codingTest.hash;
 
-import java.io.ObjectInputStream.GetField;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +15,7 @@ public class BestAlbum {
 	public static void main(String[] args) {
 
 		String[] genres = { "classic", "pop", "classic", "classic", "pop", "jazz" };
-		int[] plays = { 150, 600, 120, 800, 2500, 100 };
+		int[] plays = { 15000, 600, 120, 800, 2500, 100 };
 
 		int[] answer = solution(genres, plays);
 		
@@ -52,11 +51,11 @@ public class BestAlbum {
 		System.out.println("sumMap : " + sumMap);
 		int count = genreCountMap.size();
 		for (String firstKey : genreCountMap.keySet()) {
-			for (String secondKey : genreCountMap.keySet()) {
+			for (String secondKey : sumMap.keySet()) {
 				if (firstKey.equals(secondKey)) {
 					continue;
 				}
-				if (genreCountMap.get(firstKey) > genreCountMap.get(secondKey)) {
+				if (sumMap.get(firstKey) > sumMap.get(secondKey)) {
 					count--;
 				}
 			}
@@ -82,39 +81,91 @@ public class BestAlbum {
 			for(String genreKey : genreMap.keySet()) {
 				if(orderKey.equals(genreKey)) {
 					System.out.println(genreMap.get(genreKey) + " [ size : "+ genreMap.get(genreKey).length() + " ]");
-					for(int j = 0; j < genreMap.get(genreKey).length(); j++) {	
-						int index = genreMap.get(genreKey).charAt(j)-'0';
-						System.out.println("plays["+ index + "] : " + plays[index]);
-						if(genreMap.get(genreKey).length()==1) {
-							answer[i] = plays[index];
-						}
-					}						
+//					for(int j = 0; j < genreMap.get(genreKey).length(); j++) {	
+//						int index = genreMap.get(genreKey).charAt(j)-'0';
+//						System.out.println("plays["+ index + "] : " + plays[index]);
+//						if(genreMap.get(genreKey).length()==1) {
+//							answer[i] = plays[index];
+//						}
+//					}	
+					
+//					for(int first = 0; first < genreMap.get(orderKey).length(); i++) {
+//						int temp = 0;
+//						int count1 = 0;
+//						int index = 0;
+//						for(int second = 0; second < genreMap.get(orderKey).length(); second++) {
+//							if(first==second) continue;
+//							if(genreMap.get(orderKey).charAt(first)-'0' < plays[genreMap.get(orderKey).charAt(second)-'0']) {
+//								temp = plays[genreMap.get(orderKey).charAt(second)-'0'];
+//								index = genreMap.get(orderKey).charAt(second)-'0';
+//							}
+//						}
+//						count1++;
+//						//plays[genreMap.get("classic").charAt(i)-'0'] = 0;
+//						System.out.println("plays["+ index + "] : "  + temp);
+//						plays[index] = 0;
+//						if(count1 == 2) {
+//							break;
+//						}
+//					}
 				}
 				
 			}
 		}
 		
 		System.out.println("---장르 내에서 많이 재생된 노래 2개--");
-		
-		for(int i = 0; i < genreMap.get("pop").length(); i++) {
-			int temp = 0;
-			int count1 = 0;
-			int index = 0;
-			for(int j = 0; j < genreMap.get("pop").length(); j++) {
-				if(i==j) continue;
-				if(genreMap.get("pop").charAt(i)-'0' < plays[genreMap.get("pop").charAt(j)-'0']) {
-					temp = plays[genreMap.get("pop").charAt(j)-'0'];
-					index = genreMap.get("pop").charAt(j)-'0';
+		for(int i = 1; i < genreCountMap.size()+1; i++) {
+			String orderKey = getKey(orderMap, i);
+			System.out.println(orderKey);
+			for(int first = 0; first < genreMap.get(orderKey).length(); first++) {
+				int temp = 0;
+				int count1 = 0;
+				int index = 0;
+				for(int second = 0; second < genreMap.get(orderKey).length(); second++) {
+					if(first==second) {
+						continue;
+					}
+					if(genreMap.get(orderKey).length()==1) {
+						temp = plays[genreMap.get(orderKey).charAt(second)-'0'];
+						index = genreMap.get(orderKey).charAt(second)-'0';
+						continue;
+					}
+					if(genreMap.get(orderKey).charAt(first)-'0' < plays[genreMap.get(orderKey).charAt(second)-'0']) {
+						temp = plays[genreMap.get(orderKey).charAt(second)-'0'];
+						index = genreMap.get(orderKey).charAt(second)-'0';
+					}
+				}
+				count1++;
+				//plays[genreMap.get("classic").charAt(i)-'0'] = 0;
+				System.out.println("plays["+ index + "] : "  + temp);
+				plays[index] = 0;
+				if(count1 == 2) {
+					break;
 				}
 			}
-			count1++;
-			//plays[genreMap.get("classic").charAt(i)-'0'] = 0;
-			System.out.println("plays["+ index + "] : "  + temp);
-			plays[index] = 0;
-			if(count1 == 2) {
-				break;
-			}
 		}
+		
+//		for(int i = 0; i < genreMap.get("pop").length(); i++) {
+//			int temp = 0;
+//			int count1 = 0;
+//			int index = 0;
+//			for(int j = 0; j < genreMap.get("pop").length(); j++) {
+//				if(i==j) {
+//					continue;
+//				}
+//				if(genreMap.get("pop").charAt(i)-'0' < plays[genreMap.get("pop").charAt(j)-'0']) {
+//					temp = plays[genreMap.get("pop").charAt(j)-'0'];
+//					index = genreMap.get("pop").charAt(j)-'0';
+//				}
+//			}
+//			count1++;
+//			//plays[genreMap.get("classic").charAt(i)-'0'] = 0;
+//			System.out.println("plays["+ index + "] : "  + temp);
+//			plays[index] = 0;
+//			if(count1 == 2) {
+//				break;
+//			}
+//		}
 		// 2. 장르 내에서 많이 재생된 노래를 먼저 수록합니다.
 		return answer;
 	}
