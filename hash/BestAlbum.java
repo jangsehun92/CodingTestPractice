@@ -1,7 +1,13 @@
 package codingTest.hash;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.TreeMap;
 
 public class BestAlbum {
 	/*
@@ -16,94 +22,90 @@ public class BestAlbum {
 	 */
 	public static void main(String[] args) {
 
-		//String[] genres = { "classic", "pop", "classic", "classic", "pop", "jazz" , "jazz", "kpop" };
-		//int[] plays = { 120, 6000, 120, 800, 6000, 10000, 1000, 999 };
+		String[] genres = { "classic","classic","classic", "pop", "classic", "classic", "pop", "jazz" , "jazz","jazz", "kpop" };
+		int[] plays = 		{ 10203,	1000,		1,  	6000, 	120, 		800, 	 600000,  10000,   10000, 1000,    999999 };
 		
-		String[] genres = { "classic", "pop", "classic", "pop", "classic", "pop" };
-		int[] plays = { 500, 500, 500, 500, 500, 500 };
+//		String[] genres = { "classic", "pop", "classic", "pop", "classic", "pop" };
+//		int[] plays = {		 500, 		600, 	500, 	  600, 	  700, 	    700 };
+		
+//		String[] genres = { "classic", "pop"};
+//		int[] plays = {		 700, 		600};
+		
+//		String[] genres = { "classic", "pop", "classic", "classic", "pop", "zazz", "zazz" };
+//		int[] plays = {500, 600, 150, 800, 2500, 2100, 1000};
 
 		int[] answer = solution(genres, plays);
 		
 		for(int i = 0; i < answer.length; i ++) {
 			System.out.print(answer[i]);
 		}
-
 	}
-
+	
 	public static int[] solution(String[] genres, int[] plays) {
 		int[] answer = {};
 		
-		//각 장르에 포함되는 index값 구하기
-		HashMap<String, String> genreMap = new HashMap<String, String>();
+		TreeMap<String, List<Integer>> genreMap = new TreeMap<String, List<Integer>>();
+		//장르 별 index값 구하기
 		for (int i = 0; i < genres.length; i++) {
-			genreMap.put(genres[i], genreMap.getOrDefault(genres[i], "") + i);
+			List<Integer> idList;
+			
+			if(genreMap.containsKey(genres[i])) {
+				genreMap.get(genres[i]).add(i);
+			}else {
+				idList = new ArrayList<Integer>();
+				genreMap.put(genres[i], idList);
+				genreMap.get(genres[i]).add(i);
+			}
 		}
+		
 		System.out.println("genreMap : " + genreMap);
-
-		HashMap<String, Integer> sumMap = new HashMap<String, Integer>();
-		Map<String, Integer> orderMap = new HashMap<String, Integer>();
-
-		//각 장르의 재생수 구하기
+		
+		Map<String, List<Integer>> orderMap = new HashMap<String, List<Integer>>();
+		//genreMap sortByValue(장르별 재생수가 많은 순)
+		for(String key : genreMap.keySet()) {
+			List<Music> musicList = new ArrayList<Music>();
+			List<Integer> indexList = new ArrayList<Integer>();
+			for(int i = 0; i<genreMap.get(key).size(); i++) {
+				Music music = new Music(genreMap.get(key).get(i),genres[genreMap.get(key).get(i)],plays[genreMap.get(key).get(i)]);
+				musicList.add(music);
+			}
+			Collections.sort(musicList);
+			for(int i =0; i <musicList.size(); i++) {
+				indexList.add(musicList.get(i).getId());
+			}
+			orderMap.put(key, indexList);
+		}
+		
+		System.out.println("orderMap : " + orderMap);
+		
+		TreeMap<String, Integer> sumMap = new TreeMap<String, Integer>();
+		//각 장르의 총 play값 구하기
 		for (String key : genreMap.keySet()) {
 			sumMap.put(key, sum(key, genres, plays));
 		}
+		
 		System.out.println("sumMap : " + sumMap);
 		
-		int count = genreMap.size();
-		for (String firstKey : genreMap.keySet()) {
-			for (String secondKey : sumMap.keySet()) {
-				if (firstKey.equals(secondKey)) {
-					continue;
-				}
-				if (sumMap.get(firstKey) >= sumMap.get(secondKey)) {
-					count--;
-				}
+		//총 play값을 기준으로 장르 정렬
+		List<Entry<String, Integer>> listEntries = new ArrayList<Map.Entry<String,Integer>>(sumMap.entrySet()); 
+		Collections.sort(listEntries, new Comparator<Entry<String, Integer>>() {
+			// compare로 값을 비교
+			public int compare(Entry<String, Integer> obj1, Entry<String, Integer> obj2) {
+				// 내림 차순 정렬
+				return obj2.getValue().compareTo(obj1.getValue());
 			}
-			orderMap.put(firstKey, count);
-			count = genreMap.size();
-		}
-		System.out.println("orderMap : " + orderMap);
+		});
+		
+		//총 play값을 기준으로 장르 별 인덱스값 구하기
 		String result = "";
-		int musicCount = 0;
-		System.out.println("---장르 내에서 많이 재생된 노래 2개--");
-		for(int i = 1; i < genreMap.size()+1; i++) {
-			String orderKey = getKey(orderMap, i);
-			System.out.println(orderKey);
-			for(int first = 0; first < genreMap.get(orderKey).length(); first++) {
-				int index = genreMap.get(orderKey).charAt(first)-'0';
-				int temp = plays[index];
-				
-				for(int second = 0; second < genreMap.get(orderKey).length(); second++) {
-					if(genreMap.get(orderKey).length()==1) {
-						musicCount--;
-						break;
-					}
-					
-					if(first==second) {
-						continue;
-					}
-					
-					if(temp < plays[genreMap.get(orderKey).charAt(second)-'0']) {
-						//temp = plays[genreMap.get(orderKey).charAt(second)-'0'];
-						index = genreMap.get(orderKey).charAt(second)-'0';
-					}
-					
-					if(temp != 0 && temp == plays[genreMap.get(orderKey).charAt(second)-'0']) {
-						System.out.println(first + " : " +second);
-						System.out.println("plays["+index+"] : "+ plays[index] +" == plays["+(genreMap.get(orderKey).charAt(second)-'0')+"] : " + plays[genreMap.get(orderKey).charAt(second)-'0']);
-						plays[genreMap.get(orderKey).charAt(second)-'0'] = 0;
-						continue;
-					}
-					
-				}
-				musicCount++;
-				result += index;
-				plays[index] = 0;
-				if(musicCount == 2) {
-					musicCount=0;
+		for(Entry<String, Integer> entry : listEntries) {
+			int count = 0;
+			for(int i = 0; i < orderMap.get(entry.getKey()).size(); i++) {
+				result += orderMap.get(entry.getKey()).get(i);
+				count++;
+				if(count > 1) {
 					break;
 				}
-				
 			}
 		}
 		
@@ -113,7 +115,7 @@ public class BestAlbum {
 		}
 		return answer;
 	}
-
+	
 	public static int sum(String genre, String[] genres, int[] plays) {
 		int sum = 0;
 		for (int i = 0; i < genres.length; i++) {
@@ -123,13 +125,5 @@ public class BestAlbum {
 		}
 		return sum;
 	}
-	
-	public static <K,V> K getKey(Map<K, V> map, V value) {
-		for(K key : map.keySet()) {
-			if(value.equals(map.get(key))) {
-				return key;
-			}
-		}
-		return null;
-	}
+
 }
