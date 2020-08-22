@@ -22,8 +22,8 @@ public class BestAlbum {
 	 */
 	public static void main(String[] args) {
 
-		String[] genres = { "classic","classic","classic", "pop", "classic", "classic", "pop", "jazz" , "jazz","jazz", "kpop" };
-		int[] plays = 		{ 10203,	1000,		1,  	6000, 	120, 		800, 	 600000,  10000,   10000, 1000,    999999 };
+//		String[] genres = { "classic","classic","classic", "pop", "classic", "classic", "pop", "jazz" , "jazz","jazz", "kpop" };
+//		int[] plays = 		{ 10203,	1000,		1,  	6000, 	120, 		800, 	 600000,  10000,   10000, 1000,    999999 };
 		
 //		String[] genres = { "classic", "pop", "classic", "pop", "classic", "pop" };
 //		int[] plays = {		 500, 		600, 	500, 	  600, 	  700, 	    700 };
@@ -33,7 +33,21 @@ public class BestAlbum {
 		
 //		String[] genres = { "classic", "pop", "classic", "classic", "pop", "zazz", "zazz" };
 //		int[] plays = {500, 600, 150, 800, 2500, 2100, 1000};
-
+		
+		//틀린것으로 추정되는 TC (같을때)
+		String[] genres = {"a", "a", "b", "b", "c", "c", "d", "d"};
+		int[] plays = 		{1, 1, 1, 1, 1, 1, 1, 1};
+		
+//		String[] genres = {"a", "a", "b", "c", "a", "a"};
+//		int[] plays = 		{1, 2, 2, 2, 2, 2};
+		//--
+		
+//		String[] genres = {"classic", "pop", "classic", "pop", "classic", "classic"};
+//		int[] plays = {400, 600, 150, 2500, 500, 500};
+		
+	
+		
+		
 		int[] answer = solution(genres, plays);
 		
 		for(int i = 0; i < answer.length; i ++) {
@@ -44,7 +58,7 @@ public class BestAlbum {
 	public static int[] solution(String[] genres, int[] plays) {
 		int[] answer = {};
 		
-		TreeMap<String, List<Integer>> genreMap = new TreeMap<String, List<Integer>>();
+		Map<String, List<Integer>> genreMap = new HashMap<String, List<Integer>>();
 		//장르 별 index값 구하기
 		for (int i = 0; i < genres.length; i++) {
 			List<Integer> idList;
@@ -60,13 +74,21 @@ public class BestAlbum {
 		
 		System.out.println("genreMap : " + genreMap);
 		
+		Map<String, Integer> sumMap = new HashMap<String, Integer>();
+		//각 장르의 총 play값 구하기
+		for (String key : genreMap.keySet()) {
+			sumMap.put(key, sum(key, genres, plays));
+		}
+		
+		System.out.println("sumMap : " + sumMap);
+		
 		Map<String, List<Integer>> orderMap = new HashMap<String, List<Integer>>();
 		//genreMap sortByValue(장르별 재생수가 많은 순)
 		for(String key : genreMap.keySet()) {
 			List<Music> musicList = new ArrayList<Music>();
 			List<Integer> indexList = new ArrayList<Integer>();
 			for(int i = 0; i<genreMap.get(key).size(); i++) {
-				Music music = new Music(genreMap.get(key).get(i),genres[genreMap.get(key).get(i)],plays[genreMap.get(key).get(i)]);
+				Music music = new Music(genreMap.get(key).get(i),plays[genreMap.get(key).get(i)]);
 				musicList.add(music);
 			}
 			Collections.sort(musicList);
@@ -78,14 +100,6 @@ public class BestAlbum {
 		
 		System.out.println("orderMap : " + orderMap);
 		
-		TreeMap<String, Integer> sumMap = new TreeMap<String, Integer>();
-		//각 장르의 총 play값 구하기
-		for (String key : genreMap.keySet()) {
-			sumMap.put(key, sum(key, genres, plays));
-		}
-		
-		System.out.println("sumMap : " + sumMap);
-		
 		//총 play값을 기준으로 장르 정렬
 		List<Entry<String, Integer>> listEntries = new ArrayList<Map.Entry<String,Integer>>(sumMap.entrySet()); 
 		Collections.sort(listEntries, new Comparator<Entry<String, Integer>>() {
@@ -95,7 +109,7 @@ public class BestAlbum {
 				return obj2.getValue().compareTo(obj1.getValue());
 			}
 		});
-		
+				
 		//총 play값을 기준으로 장르 별 인덱스값 구하기
 		String result = "";
 		for(Entry<String, Integer> entry : listEntries) {

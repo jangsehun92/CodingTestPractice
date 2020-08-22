@@ -2,12 +2,10 @@ package codingTest.hash;
 
 public class Music implements Comparable<Music>{
 	private int id;
-	private String genre;
 	private int played;
 	
-	public Music( int id, String genre, int played) {
+	public Music( int id, int played) {
 		this.id = id;
-		this.genre = genre;
 		this.played = played;
 	}
 
@@ -33,16 +31,9 @@ public class Music implements Comparable<Music>{
         }
 	}
 	
-	public String getGenre() {
-		return genre;
-	}
 	
 	public int getId() {
 		return id;
-	}
-	
-	public int getPlayed() {
-		return played;
 	}
 
 }
