@@ -82,7 +82,7 @@ public class BestAlbum {
 		
 		System.out.println("sumMap : " + sumMap);
 		
-		Map<String, List<Integer>> orderMap = new HashMap<String, List<Integer>>();
+		Map<String, List<Integer>> orderMap = new TreeMap<String, List<Integer>>();
 		//genreMap sortByValue(장르별 재생수가 많은 순)
 		for(String key : genreMap.keySet()) {
 			List<Music> musicList = new ArrayList<Music>();
