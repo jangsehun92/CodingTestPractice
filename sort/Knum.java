@@ -1,6 +1,7 @@
 package codingTest.sort;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class Knum {
 		int[] array = {1,5,2,6,3,7,4};
 		int[][] commands = { {2,5,3}, {4,4,1}, {1,7,3}};
 		
-		int[] result = solution(array, commands);
+		int[] result = solution2(array, commands);
 		
 		for(int i = 0; i < result.length; i++) {
 			System.out.println(result[i]);
@@ -55,6 +56,21 @@ public class Knum {
 			Collections.sort(arr);
 			answer[i] = arr.get(commands[i][2]-1);
 		}
+		return answer;
+	}
+	
+	public static int[] solution2(int[] array, int[][] commands) {
+		int [] answer = new int[commands.length];
+		
+		int[] temp;
+		
+		for(int i = 0; i<commands.length; i++) {
+			temp = Arrays.copyOfRange(array, commands[i][0]-1, commands[i][1]);
+			
+			Arrays.sort(temp);
+			answer[i] = temp[commands[i][2]-1];
+		}
+		
 		return answer;
 	}
 }
