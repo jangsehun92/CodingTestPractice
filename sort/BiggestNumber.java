@@ -1,5 +1,9 @@
 package codingTest.sort;
 
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 public class BiggestNumber {
 /*
  * 	0 또는 양의 정수가 주어졌을 때, 정수를 이어 붙여 만들 수 있는 가장 큰 수를 알아내 주세요.
@@ -16,7 +20,8 @@ public class BiggestNumber {
 	
 	public static void main(String[] args) {
 		
-		int[] numbers = {6, 10, 2};
+		//int[] numbers = {3, 30, 34, 5, 9};
+		int[] numbers = {1, 2, 3, 4, 5};
 		
 		
 		String answer = solution(numbers);
@@ -31,9 +36,61 @@ public class BiggestNumber {
 	public static String solution(int[] numbers) {
 		String answer = "";
 		
+		String[] strNumbers = new String[numbers.length];
 		
+		for(int i = 0; i < numbers.length; i++) {
+			strNumbers[i] = String.valueOf(numbers[i]);
+			//strNumbers[i] = ""+numbers[i];
+			System.out.println(strNumbers[i]);
+		}
+		
+		
+		
+		Arrays.sort(strNumbers, new Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				System.out.println("s1 : " + s1 + " s2 : " + s2);
+				System.out.println((s2+s1) + " | " +  (s1+s2));
+				return (s2+s1).compareTo(s1+s2);
+			};
+		});
+		
+		if(strNumbers[0].startsWith("0")) {
+			answer += "0";
+		}else {
+			for(int i = 0; i<strNumbers.length; i++) {
+				answer += strNumbers[i];
+			}
+		}
 		
 		return answer;
+	}
+	
+	
+	public static String solution2(int[] numbers) {
+		PriorityQueue<String> pq = new PriorityQueue<String>(new Comparator<String>() {
+            @Override
+            public int compare(String s1, String s2) {
+            	System.out.print("1 : "+s1);
+            	System.out.println(" 2 : "+s2);
+            	System.out.println("result : " + (Integer.parseInt(s2 + s1) - Integer.parseInt(s1 + s2)));
+                return Integer.parseInt(s2 + s1) - Integer.parseInt(s1 + s2);
+            }
+        });
+        String ans = "";
+
+        for (int num : numbers) {
+        	System.out.println(num);
+            pq.offer(String.valueOf(num));
+        }
+
+        while (!pq.isEmpty()) {
+            ans += pq.poll();
+        }
+
+        if (ans.charAt(0) == '0')
+            return "0";
+        else return ans;
 	}
 	
 }
