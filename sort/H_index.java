@@ -21,8 +21,8 @@ public class H_index {
 	 */
 	public static void main(String[] args) {
 		//int[] citations = {3, 0, 6, 1, 5};
-		//int[] citations = {25, 8, 5, 3, 3};
-		int[] citations = {0, 0, 0};
+		int[] citations = {25, 8, 5, 3, 3};
+		//int[] citations = {0, 0, 0};
 		
 		int answer = solution(citations);
 		
@@ -58,9 +58,8 @@ public class H_index {
 			for(int i = 0; i < arr.length; i++) {
 				if(arr[i] >= h_index) {
 					count++;
-					System.out.println("h_index : " + h_index + " count : " + count);
 				}
-				
+				System.out.println("h_index : " + h_index + " arr["+i+"] : "+ arr[i] + " count : " + count);
 				if(h_index == count) {
 					answer = count;
 					isBoolean = false;
