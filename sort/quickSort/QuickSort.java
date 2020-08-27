@@ -21,7 +21,7 @@ public class QuickSort {
 		System.out.println("start_index : " + start + " end_index : " + end);
 		//3. 기준이 될 pivot값을 구한다.(start index 값과 end index값을 더해준 후 나누어 pivot값이 될 arr의 index를 구한다.)
 		int pivot = arr[(start + end) /2];
-		System.out.println("arr["+(arr[(start + end) /2])+"] pivot : " + pivot);
+		System.out.println("arr["+((start + end) /2)+"] = pivot : " + pivot);
 		//4. start index값이 end값보다 클때까지 반복(왼쪽 기준 index가 오른쪽 index를 넘어가면 멈춘다.
 		while(start <= end) {
 			//5. start index를 이용하여 pivot값보다 큰 값을 찾을 동안 index를 오른쪽으로 밀어준다.
@@ -33,7 +33,7 @@ public class QuickSort {
 				end--;
 			}
 			printArray(arr);
-			System.out.println("pivot(arr[" +(pivot-1)+ "]: "+arr[pivot-1]+")을 기준으로 왼쪽에서 pivot 보다 크거나 같은 값 : arr[" + start+ "] : " + arr[start]  + " / 오른쪽에서 pivot 보다 작거나 같은 값 : arr[" + end+ "] : " + arr[end]);
+			System.out.println("pivot 값을 기준으로 왼쪽에서 pivot 보다 크거나 같은 값 : arr[" + start+ "] : " + arr[start]  + " / 오른쪽에서 pivot 보다 작거나 같은 값 : arr[" + end+ "] : " + arr[end]);
 			//7. 위의 반복문에서 찾은 arr[start]=pivot보다 큰 값, arr[end]=pivot보다 작은 값을 
 			// 현재 start index보다 end index가 클 때 arr[start] 값과 arr[end] 값을 스왑한다.
 			// 값을 스왑 후 이제 start ++, end -- 를 통해 다음 index를 가르킨다.
@@ -48,7 +48,7 @@ public class QuickSort {
 			
 		}
 		System.out.println("return start : " + start);
-		//8. pivot값을 기준으로 양쪽이 스왑이 끝나면 이제 start값(여기서 돌려주는것은 처음시작한 pivot index값의 이다)
+		//8. pivot값을 기준으로 양쪽이 스왑이 끝나면 이제 start값을 리턴한다.(return 되어지는 start값은 정렬이 끝난후 start index의 ++ 상태의 인덱스이다)
 		return start;
 	}
 	
