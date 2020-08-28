@@ -1,7 +1,8 @@
 package codingTest.sort.quickSort;
 
-public class QuickSort {
+public class QuickSort { 
 	
+	//재귀 함수는 메모리(스택)에 이전 함수(복사본)의 주소가 저장 : 마지막 호출된 복사본이 종료되면 이전 함수(복사본)으로 돌아감
 	private static void quickSort(int[] arr, int start, int end) {
 		//2. pivot 값을 기준으로 구역을 나누고 왼쪽은 pivot값 보다 작은 값 오른쪽은 pivot값 보다 큰 값으로 서로 스왑하는 partition호출
 		int part2 = partition(arr, start, end); //partition함수의 return 값은 pivot값을 기준으로 한번 정렬한 후, 오른쪽 파트의 첫번째 인덱스이다.
@@ -10,7 +11,7 @@ public class QuickSort {
 		if(start < part2 -1) {	//오른쪽 파티션이 시작점 바로 다음에서 시작한다면 왼쪽 파티션에 데이터가 1개 뿐이라 하지않음 시작점에서 한개 이상의 차이가 날때만 정렬
 			quickSort(arr, start, part2 -1); 
 		}
-		//9. 왼쪽 섹션이 모두 Sort가 되면 이제 오른쪽으로 넘어간다.(part2값은 마지막 왼쪽 섹션을 Sort할 때의 값)
+		//9. 왼쪽 섹션이 모두 Sort가 되면 이제 오른쪽으로 넘어간다.
 		if(part2 < end) {
 			quickSort(arr, part2, end);
 		}
