@@ -19,6 +19,7 @@ public class QuickSort3 {
 	
 	public static int partition(int[] arr, int left, int right) {
 		int pivot = arr[(left+right)/2];
+		//int pivot = arr[(int)(Math.random() * arr.length)];
 		
 		//왼쪽 섹션의 index값이 오른쪽 섹션의 index를 지나치면 멈춘다.
 		while(left <= right) {
