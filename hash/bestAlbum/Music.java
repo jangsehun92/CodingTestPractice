@@ -1,4 +1,4 @@
-package codingTest.hash;
+package codingTest.hash.bestAlbum;
 
 public class Music implements Comparable<Music>{
 	private int id;

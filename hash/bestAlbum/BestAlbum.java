@@ -1,4 +1,4 @@
-package codingTest.hash;
+package codingTest.hash.bestAlbum;
 
 import java.util.ArrayList;
 import java.util.Collections;
