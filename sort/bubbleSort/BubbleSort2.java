@@ -5,23 +5,24 @@ public class BubbleSort2 {
 	public static void bubbleSort(int[] arr, int last) {
 		
 		//재귀적으로 처리하는 방법
-		if(last > 0) {
-			for(int i = 1; i < arr.length; i++) {
-				if(arr[i-1] > arr[i]) {
-					swap(arr, i-1, i);
-				}
-			}
-			bubbleSort(arr, last-1);
-		}
-		
-		//2중 포문으로 처리하는 방법
-//		for(int i = 0; i < arr.length; i++) {
-//			for(int j = 1; j < arr.length; j++) {
-//				if(arr[j-1] < arr[j]) {
-//					swap(arr, j-1, j);
+//		if(last > 0) {
+//			for(int i = 1; i <= last; i++) {
+//				if(arr[i-1] > arr[i]) {
+//					swap(arr, i-1, i);
 //				}
 //			}
+//			bubbleSort(arr, last-1);
 //		}
+		
+		//2중 포문으로 처리하는 방법
+		for(int i = 0; i <= last; i++) {
+			for(int j = 1; j <= last; j++) {
+				if(arr[j-1] > arr[j]) {
+					swap(arr, j-1, j);
+				}
+			}
+			last--;
+		}
 	}
 	
 	//스왑 함수
