@@ -3,29 +3,29 @@ package codingTest.test;
 public class LookAndSaySequence {
 
 	public static void main(String[] args) {
-		String temp = "1";
+		String result = "1";
 		for(int i = 0; i < 10; i++) {
-			System.out.println(temp);
-			temp = lookAndSay(temp);
+			System.out.println(result);
+			result = lookAndSay(result);
 		}
 
 	}
 	
-	public static String lookAndSay(String number) {
+	public static String lookAndSay(String numbers) {
 		String result = "";
-		char firstNum = number.charAt(0);
+		char number = numbers.charAt(0);
 		int count = 1;
-		for(int i = 1; i < number.length(); i++) {
-			if(firstNum==number.charAt(i)) {
+		for(int i = 1; i < numbers.length(); i++) {
+			if(number==numbers.charAt(i)) {
 				count++;
 			}else {
-				result += firstNum;
+				result += number;
 				result += count;
-				firstNum = number.charAt(i);
+				number = numbers.charAt(i);
 				count = 1;
 			}
 		}
-		result += firstNum;
+		result += number;
 		result += count;
 		return result;
 	}
