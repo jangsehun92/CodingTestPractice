@@ -21,9 +21,4 @@ public class Node<T> {
 		return this.link;
 	}
 	
-	@Override
-	public String toString() {
-		return "data : " + this.data + " link : " + link; 
-	}
-	
 }

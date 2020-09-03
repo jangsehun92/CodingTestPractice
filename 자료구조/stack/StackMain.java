@@ -24,7 +24,8 @@ public class StackMain {
 		stackNode.push(3);
 		stackNode.push(4);
 		stackNode.push(5);
-		System.out.println(stackNode.peek());
+		System.out.println("top Node Data : " + stackNode.peek());
+		stackNode.printStack();
 		
 		
 	}

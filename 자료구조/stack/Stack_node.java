@@ -13,7 +13,6 @@ public class Stack_node<T> {
 		node.setLink(top);
 		//top node를 새로 생성한 Node로 변경한다.
 		top = node;
-		System.out.println(top);
 	}
 
 	public T pop() {
@@ -30,6 +29,15 @@ public class Stack_node<T> {
 			throw new EmptyStackException();
 		}
 		return top.getData();
+	}
+	
+	public void printStack() {
+		Node<T> tempNode = this.top;
+		System.out.println("stackList");
+		while(tempNode != null) {
+			System.out.println(tempNode.getData());
+			tempNode = tempNode.getLink();
+		}
 	}
 
 }
