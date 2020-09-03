@@ -1,10 +1,10 @@
 package codingTest.자료구조.stack;
 
-public class main {
+public class StackMain {
 
 	public static void main(String[] args) {
 		Stack stack = new Stack(10);
-		System.out.println(stack.empty());
+		System.out.println(stack.isEmpty());
 		stack.push(1);
 		stack.push(2);
 		stack.push(3);
@@ -14,6 +14,7 @@ public class main {
 		System.out.println(stack.peek());
 		stack.pop();
 		stack.push(1);
+		stack.clear();
 		stack.pop();
 		stack.printStack();
 		
