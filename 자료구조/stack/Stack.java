@@ -56,9 +56,13 @@ public class Stack {
 	}
 	
 	public void printStack() {
-		System.out.println("stackList");
-		for(int i = top; i >= 0; i--) {
-			System.out.println(stackArr[i]);
+		if(isEmpty()) {
+			System.out.println("스택이 비어있습니다.");
+		}else {
+			System.out.println("stackList");
+			for(int i = top; i >= 0; i--) {
+				System.out.println(stackArr[i]);
+			}
 		}
 	}
 

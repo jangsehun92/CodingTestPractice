@@ -15,8 +15,16 @@ public class StackMain {
 		stack.pop();
 		stack.push(1);
 		stack.clear();
-		stack.pop();
 		stack.printStack();
+		
+		
+		Stack_node<Integer> stackNode = new Stack_node<>();
+		stackNode.push(1);
+		stackNode.push(2);
+		stackNode.push(3);
+		stackNode.push(4);
+		stackNode.push(5);
+		System.out.println(stackNode.peek());
 		
 		
 	}
