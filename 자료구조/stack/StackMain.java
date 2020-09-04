@@ -1,5 +1,8 @@
 package codingTest.자료구조.stack;
 
+import codingTest.자료구조.stack.day1.Stack;
+import codingTest.자료구조.stack.day2.Stack2;
+
 public class StackMain {
 
 	public static void main(String[] args) {
@@ -16,16 +19,18 @@ public class StackMain {
 		stack.push(1);
 		stack.clear();
 		stack.printStack();
+		//--------
 		
-		
-		Stack_node<Integer> stackNode = new Stack_node<>();
-		stackNode.push(1);
-		stackNode.push(2);
-		stackNode.push(3);
-		stackNode.push(4);
-		stackNode.push(5);
-		System.out.println("top Node Data : " + stackNode.peek());
-		stackNode.printStack();
+		Stack2 stack2 = new Stack2(5);
+		System.out.println(stack2.isEmpty());
+		stack2.push(1);
+		stack2.push(2);
+		stack2.push(3);
+		stack2.push(4);
+		stack2.push(5);
+		stack2.pop();
+		System.out.println("peek : " + stack2.peek());
+		stack2.printStack();
 		
 		
 	}

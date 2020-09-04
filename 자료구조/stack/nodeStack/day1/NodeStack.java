@@ -1,8 +1,8 @@
-package codingTest.자료구조.stack;
+package codingTest.자료구조.stack.nodeStack.day1;
 
 import java.util.EmptyStackException;
 
-public class Stack_node<T> {
+public class NodeStack<T> {
 
 	private Node<T> top;
 

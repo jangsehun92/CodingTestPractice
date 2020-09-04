@@ -1,4 +1,4 @@
-package codingTest.자료구조.stack;
+package codingTest.자료구조.stack.day1;
 
 public class Stack {
 	
