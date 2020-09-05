@@ -2,6 +2,7 @@ package codingTest.자료구조.stack;
 
 import codingTest.자료구조.stack.nodeStack.day1.NodeStack;
 import codingTest.자료구조.stack.nodeStack.day2.NodeStack2;
+import codingTest.자료구조.stack.nodeStack.day3.NodeStack3;
 
 public class NodeStackMain {
 
@@ -28,6 +29,16 @@ public class NodeStackMain {
 		System.out.println(nodeStack2.isEmpty());
 		nodeStack2.clear();
 		System.out.println(nodeStack2.isEmpty());
+		
+		NodeStack3<Integer> nodeStack3 = new NodeStack3<Integer>();
+		nodeStack3.push(1);
+		nodeStack3.push(2);
+		nodeStack3.push(4);
+		nodeStack3.push(5);
+		nodeStack3.push(3);
+		System.out.println(nodeStack3.pop());
+		System.out.println(nodeStack3.pop());
+		System.out.println(nodeStack3.isEmpty());
 		
 	}
 
