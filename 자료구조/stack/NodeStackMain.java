@@ -55,11 +55,11 @@ public class NodeStackMain {
 		nodeStack4.push(5);
 		nodeStack4.push(3);
 		nodeStack4.printStack();
-		System.out.println(nodeStack4.pop());
-		System.out.println(nodeStack4.pop());
-		System.out.println(nodeStack4.pop());
-		System.out.println(nodeStack4.pop());
-		//nodeStack3.clear();
+		nodeStack4.clear();
+//		System.out.println(nodeStack4.pop());
+//		System.out.println(nodeStack4.pop());
+//		System.out.println(nodeStack4.pop());
+//		System.out.println(nodeStack4.pop());
 		System.out.println(nodeStack4.isEmpty());
 		nodeStack4.printStack();
 		

@@ -40,7 +40,6 @@ public class NodeStack4<T> {
 			Node3<T> temp = top.getLink();
 			top = null;
 			top = temp;
-			System.out.println(top);
 		}
 	}
 	
