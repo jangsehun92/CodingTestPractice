@@ -31,5 +31,25 @@ public class NodeStack3<T> {
 	public boolean isEmpty() {
 		return (top == null);
 	}
+	
+	public void clear() {
+		if(isEmpty()) {
+			System.out.println("이미 스택이 비어져있습니다.");
+		}
+		while(top != null) {
+			Node3<T> temp = top.getLink();
+			top = null;
+			top = temp;
+		}
+	}
+	
+	public void printStack() {
+		Node3<T> tempNode = this.top;
+		System.out.println("stackList");
+		while(tempNode != null) {
+			System.out.println(tempNode.getData());
+			tempNode = tempNode.getLink();
+		}
+	}
 
 }
