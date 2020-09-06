@@ -1,18 +1,18 @@
-package codingTest.자료구조.stack.nodeStack.day3;
+package codingTest.자료구조.stack.nodeStack.day4;
 
-public class NodeStack3<T> {
+public class NodeStack4<T> {
 	
-	private Node3<T> top;
+	private Node4<T> top;
 	
 	public void push(T data) {
-		Node3<T> newNode = new Node3<T>(data);
+		Node4<T> newNode = new Node4<T>(data);
 		newNode.setLink(top);
 		top = newNode;
 	}
 	
 	public T pop() {
 		if(isEmpty()) {
-			System.out.println("Stack이 비어있습니다.");
+			System.out.println("스택이 비어있습니다.");
 			return null;
 		}
 		T data = top.getData();
@@ -22,7 +22,7 @@ public class NodeStack3<T> {
 	
 	public T peek() {
 		if(isEmpty()) {
-			System.out.println("Stack이 비어있습니다.");
+			System.out.println("스택이 비어있습니다.");
 			return null;
 		}
 		return top.getData();
@@ -35,21 +35,24 @@ public class NodeStack3<T> {
 	public void clear() {
 		if(isEmpty()) {
 			System.out.println("이미 스택이 비어져있습니다.");
+			return;
 		}
 		while(top != null) {
-			Node3<T> temp = top.getLink();
+			Node4<T> tempNode = this.top.getLink();
 			top = null;
-			top = temp;
+			top = tempNode;
 		}
 	}
 	
 	public void printStack() {
-		Node3<T> tempNode = this.top;
-		System.out.println("stackList");
+		Node4<T> tempNode = this.top;
+		System.out.println("nodeStack4 List");
 		while(tempNode != null) {
 			System.out.println(tempNode.getData());
 			tempNode = tempNode.getLink();
 		}
 	}
+	
+	
 
 }
