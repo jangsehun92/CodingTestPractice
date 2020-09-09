@@ -37,8 +37,9 @@ public class NodeStack6<T> {
 			System.out.println("스택이 이미 비어있습니다.");
 			return;
 		}
-		Node6<T> tempNode = top;
+		
 		while(top != null) {
+			Node6<T> tempNode = top;
 			top = null;
 			top = tempNode.getLink();
 		}
@@ -46,7 +47,7 @@ public class NodeStack6<T> {
 	
 	public void printStack() {
 		if(isEmpty()) {
-			System.out.println("스택이 이미 비어있습니다.");
+			System.out.println("스택이 비어있습니다.");
 			return;
 		}
 		System.out.println("NodeStack6 List");
