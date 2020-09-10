@@ -1,4 +1,4 @@
-package codingTest.자료구조.queue;
+package codingTest.자료구조.queue.day1;
 
 public class Queue {
 	
