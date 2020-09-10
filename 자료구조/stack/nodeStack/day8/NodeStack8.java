@@ -1,11 +1,11 @@
-package codingTest.자료구조.stack.nodeStack.day7;
+package codingTest.자료구조.stack.nodeStack.day8;
 
-public class NodeStack7<T> {
+public class NodeStack8<T> {
 	
-	private Node7<T> top;
+	private Node8<T> top;
 	
-	public void push(T data) {
-		Node7<T> newNode = new Node7<T>(data);
+	public void push(T data){
+		Node8<T> newNode = new Node8<T>(data);
 		newNode.setLink(top);
 		top = newNode;
 	}
@@ -37,7 +37,7 @@ public class NodeStack7<T> {
 			System.out.println("스택이 이미 비어있습니다.");
 			return;
 		}
-		Node7<T> tempNode;
+		Node8<T> tempNode;
 		while(top != null) {
 			tempNode = top;
 			top = null;
@@ -47,11 +47,11 @@ public class NodeStack7<T> {
 	
 	public void printStack() {
 		if(isEmpty()) {
-			System.out.println("스택이 비어있습니다.");
+			System.out.println("스택이 이미 비어있습니다.");
 			return;
 		}
-		System.out.println("NodeStack7 List");
-		Node7<T> tempNode = top;
+		System.out.println("NodeStack8 List");
+		Node8<T> tempNode = top;
 		while(tempNode != null) {
 			System.out.println(tempNode.getData());
 			tempNode = tempNode.getLink();

@@ -6,6 +6,7 @@ import codingTest.자료구조.stack.nodeStack.day3.NodeStack4;
 import codingTest.자료구조.stack.nodeStack.day5.NodeStack5;
 import codingTest.자료구조.stack.nodeStack.day6.NodeStack6;
 import codingTest.자료구조.stack.nodeStack.day7.NodeStack7;
+import codingTest.자료구조.stack.nodeStack.day8.NodeStack8;
 
 public class NodeStackMain {
 
@@ -102,7 +103,7 @@ public class NodeStackMain {
 		nodeStack7.push(2);
 		nodeStack7.push(4);
 		nodeStack7.push(5);
-		nodeStack7.push(3);
+		nodeStack7.push(3); 
 		nodeStack7.printStack();
 		nodeStack7.pop();
 		nodeStack7.pop();
@@ -110,6 +111,21 @@ public class NodeStackMain {
 		nodeStack7.clear();
 		System.out.println(nodeStack7.isEmpty());
 		nodeStack7.printStack();
+		
+		System.out.println("-----nodeStack8");
+		NodeStack8<Integer> nodeStack8 = new NodeStack8<Integer>();
+		nodeStack8.push(1);
+		nodeStack8.push(2);
+		nodeStack8.push(4);
+		nodeStack8.push(5);
+		nodeStack8.push(3); 
+		nodeStack8.printStack();
+		nodeStack8.pop();
+		nodeStack8.pop();
+		nodeStack8.printStack();
+		nodeStack8.clear();
+		System.out.println(nodeStack8.isEmpty());
+		nodeStack8.printStack();
 		 
 	}
 
