@@ -2,6 +2,7 @@ package codingTest.자료구조.queue;
 
 import codingTest.자료구조.queue.day1.Queue;
 import codingTest.자료구조.queue.day2.Queue2;
+import codingTest.자료구조.queue.day3.Queue3;
 
 public class QueueMain {
 
@@ -42,6 +43,27 @@ public class QueueMain {
 		//queue2.dequeue();
 		queue2.peek();
 		queue2.printQueue();
+		
+		System.out.println("Queue3");
+		Queue3 queue3 = new Queue3(5);
+		
+		queue3.enqueue(1);
+		queue3.enqueue(2);
+		queue3.enqueue(3);
+		queue3.printQueue();
+		queue3.dequeue();
+		queue3.peek();
+		
+		queue3.enqueue(4);
+		queue3.enqueue(5);
+		queue3.printQueue();
+		queue3.dequeue();
+		queue3.dequeue();
+		queue3.dequeue();
+		//queue2.dequeue();
+		//queue2.dequeue();
+		queue3.peek();
+		queue3.printQueue();
 	}
 
 }
