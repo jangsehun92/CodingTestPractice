@@ -1,12 +1,12 @@
-package codingTest.자료구조.stack.day9;
+package codingTest.자료구조.stack.day10;
 
-public class Stack9 {
+public class Stack10 {
 	
 	private int[] stack;
 	private int stackSize;
 	private int top;
 	
-	public Stack9(int stackSize) {
+	public Stack10(int stackSize) {
 		stack = new int[stackSize];
 		this.stackSize = stackSize;
 		this.top = -1;
@@ -14,9 +14,9 @@ public class Stack9 {
 	
 	public void push(int data) {
 		if(isFull()) {
-			throw new ArrayIndexOutOfBoundsException("스택이 가득 차있습니다.");
+			throw new ArrayIndexOutOfBoundsException("스택이 가득 찼습니다.");
 		}
-		System.out.println("Push [ " + data + " ]");
+		System.out.println("Push [ "+data+" ]");
 		stack[++top] = data;
 	}
 	
@@ -24,7 +24,7 @@ public class Stack9 {
 		if(isEmpty()) {
 			throw new ArrayIndexOutOfBoundsException("스택이 비어있습니다.");
 		}
-		System.out.println("Pop [ " + stack[top] +" ]");
+		System.out.println("Pop [ " + stack[top] + " ]");
 		return stack[top--];
 	}
 	
@@ -32,7 +32,7 @@ public class Stack9 {
 		if(isEmpty()) {
 			throw new ArrayIndexOutOfBoundsException("스택이 비어있습니다.");
 		}
-		System.out.println("Peek [ " + stack[top] +" ]");
+		System.out.println("Peek [ " + stack[top] + " ]");
 		return stack[top];
 	}
 	
@@ -45,22 +45,18 @@ public class Stack9 {
 	}
 	
 	public void clear() {
-		if(isEmpty()) {
-			throw new ArrayIndexOutOfBoundsException("스택이 이미 비어있습니다.");
-		}
 		stack = new int[stackSize];
-		this.top = -1;
+		top = -1;
 	}
 	
 	public void printStack() {
 		if(isEmpty()) {
 			throw new ArrayIndexOutOfBoundsException("스택이 비어있습니다.");
 		}
-		System.out.println("Stack9 List");
+		System.out.println("Stack10 List");
 		for(int i = top; i >= 0; i--) {
 			System.out.println(stack[i]);
 		}
 	}
-	
 
 }
