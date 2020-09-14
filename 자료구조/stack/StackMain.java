@@ -3,6 +3,7 @@ package codingTest.자료구조.stack;
 import codingTest.자료구조.stack.day1.Stack;
 import codingTest.자료구조.stack.day10.Stack10;
 import codingTest.자료구조.stack.day11.Stack11;
+import codingTest.자료구조.stack.day12.Stack12;
 import codingTest.자료구조.stack.day2.Stack2;
 import codingTest.자료구조.stack.day3.Stack3;
 import codingTest.자료구조.stack.day4.Stack4;
@@ -178,6 +179,23 @@ public class StackMain {
 		stack11.push(2);
 		stack11.peek();
 		stack11.printStack();
+		
+		System.out.println("stack12");
+		Stack12 stack12 = new Stack12(5);
+		System.out.println(stack12.isEmpty());
+		stack12.push(1);
+		stack12.push(2);
+		stack12.push(3);
+		stack12.push(4);
+		stack12.push(5);
+		stack12.printStack();
+		stack12.pop();
+		stack12.peek();
+		stack12.printStack();
+		stack12.clear();
+		stack12.push(2);
+		stack12.peek();
+		stack12.printStack();
 		
 	}
 
