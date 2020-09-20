@@ -1,18 +1,18 @@
 package codingTest.sort.bubbleSort;
 
-public class BubbleSort22 {
+public class BubbleSort23 {
 	
 	public static void bubbleSort(int[] arr, int last) {
 		if(last > 0) {
 			for(int i = 1; i <= last; i++) {
-				if(arr[i-1] > arr[i]){
+				if(arr[i-1] > arr[i]) {
 					swap(arr, i-1, i);
 				}
 			}
 			bubbleSort(arr, last-1);
 		}
 	}
-	
+
 	public static void swap(int[] arr, int left, int right) {
 		int temp = arr[left];
 		arr[left] = arr[right];
@@ -27,11 +27,10 @@ public class BubbleSort22 {
 	}
 
 	public static void main(String[] args) {
-		int[] arr = { 1,7,0,4,9,5,6,3,8,2 };
+		int[] arr = { 0,3,6,9,7,8,1,2,5,4 };
 		
 		print(arr);
 		bubbleSort(arr, arr.length-1);
 		print(arr);
 	}
-
 }
