@@ -8,6 +8,7 @@ import codingTest.자료구조.queue.day13.Queue13;
 import codingTest.자료구조.queue.day14.Queue14;
 import codingTest.자료구조.queue.day15.Queue15;
 import codingTest.자료구조.queue.day16.Queue16;
+import codingTest.자료구조.queue.day17.Queue17;
 import codingTest.자료구조.queue.day2.Queue2;
 import codingTest.자료구조.queue.day3.Queue3;
 import codingTest.자료구조.queue.day4.Queue4;
@@ -330,6 +331,26 @@ public class QueueMain {
 		queue16.peek();
 		queue16.printQueue();
 		queue16.dequeue();
+		
+		System.out.println("---------------------");
+		System.out.println("Queue17");
+		Queue17 queue17 = new Queue17(5);
+		
+		queue17.enqueue(1);
+		queue17.enqueue(2);
+		queue17.enqueue(3);
+		queue17.peek();
+		queue17.enqueue(4);
+		queue17.enqueue(5);
+		queue17.printQueue();
+		queue17.dequeue();
+		queue17.dequeue();
+		queue17.printQueue();
+		queue17.dequeue();
+		queue17.dequeue();
+		queue17.peek();
+		queue17.printQueue();
+		queue17.dequeue();
 		
 	}
 
