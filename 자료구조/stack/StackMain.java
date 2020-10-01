@@ -19,6 +19,7 @@ import codingTest.자료구조.stack.day23.Stack23;
 import codingTest.자료구조.stack.day24.Stack24;
 import codingTest.자료구조.stack.day25.Stack25;
 import codingTest.자료구조.stack.day26.Stack26;
+import codingTest.자료구조.stack.day27.Stack27;
 import codingTest.자료구조.stack.day3.Stack3;
 import codingTest.자료구조.stack.day4.Stack4;
 import codingTest.자료구조.stack.day5.Stack5;
@@ -432,7 +433,7 @@ public class StackMain {
 		stack25.printStack();
 		stack25.clear();
 		
-		System.out.println("stack25");
+		System.out.println("stack26");
 		Stack26 stack26 = new Stack26(5);
 		stack26.push(1);
 		stack26.push(2);
@@ -448,6 +449,23 @@ public class StackMain {
 		stack26.peek();
 		stack26.printStack();
 		stack26.clear();
+		
+		System.out.println("stack7");
+		Stack27 stack27 = new Stack27(5);
+		stack27.push(1);
+		stack27.push(2);
+		stack27.push(3);
+		stack27.push(4);
+		stack27.push(5);
+		stack27.printStack();
+		stack27.pop();
+		stack27.peek();
+		stack27.printStack();
+		stack27.clear();
+		stack27.push(2);
+		stack27.peek();
+		stack27.printStack();
+		stack27.clear();
 	}
 
 }
