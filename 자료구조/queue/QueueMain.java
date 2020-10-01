@@ -14,6 +14,7 @@ import codingTest.자료구조.queue.day19.Queue19;
 import codingTest.자료구조.queue.day2.Queue2;
 import codingTest.자료구조.queue.day20.Queue20;
 import codingTest.자료구조.queue.day21.Queue21;
+import codingTest.자료구조.queue.day22.Queue22;
 import codingTest.자료구조.queue.day3.Queue3;
 import codingTest.자료구조.queue.day4.Queue4;
 import codingTest.자료구조.queue.day5.Queue5;
@@ -435,6 +436,26 @@ public class QueueMain {
 		queue21.peek();
 		queue21.printQueue();
 		queue21.dequeue();
+		
+		System.out.println("---------------------");
+		System.out.println("Queue22");
+		Queue22 queue22 = new Queue22(5);
+		
+		queue22.enqueue(1);
+		queue22.enqueue(2);
+		queue22.enqueue(3);
+		queue22.peek();
+		queue22.enqueue(4);
+		queue22.enqueue(5);
+		queue22.printQueue();
+		queue22.dequeue();
+		queue22.dequeue();
+		queue22.printQueue();
+		queue22.dequeue();
+		queue22.dequeue();
+		queue22.peek();
+		queue22.printQueue();
+		queue22.dequeue();
 	}
 
 }
