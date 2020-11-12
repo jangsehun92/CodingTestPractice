@@ -28,7 +28,6 @@ public class SelectionSort10 {
 	
 	public static void main(String[] args) {
 		int[] arr = { 0,1,9,2,8,7,6,4,3,5};
-		
 		print(arr);
 		selectionSort(arr, 0);
 		print(arr);
