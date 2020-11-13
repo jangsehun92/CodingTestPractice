@@ -1,4 +1,4 @@
-package codingTest.자료구조.hashTable;
+package codingTest.자료구조.hashTable.day1;
 
 import java.util.LinkedList;
 
