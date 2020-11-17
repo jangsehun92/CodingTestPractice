@@ -1,12 +1,12 @@
-package codingTest.자료구조.hashTable.day4;
+package codingTest.자료구조.hashTable.day5;
 
 import java.util.LinkedList;
 
-public class HashTable4 {
+public class HashTable5 {
 	
 	private LinkedList[] table;
 	
-	public HashTable4(int size) {
+	public HashTable5(int size) {
 		this.table = new LinkedList[size];
 	}
 	
@@ -22,9 +22,9 @@ public class HashTable4 {
 		return hashCode % table.length;
 	}
 	
-	public Node4 searchNode(LinkedList<Node4> list, String key) {
+	public Node5 searchNode(LinkedList<Node5> list, String key) {
 		if(list == null) return null;
-		for(Node4 node : list) {
+		for(Node5 node : list) {
 			if(node.getKey().equals(key)) {
 				return node;
 			}
@@ -34,16 +34,16 @@ public class HashTable4 {
 	
 	public void put(String key, String value) {
 		int index = convertToIndex(getHashCode(key));
-		LinkedList<Node4> list = table[index];
+		LinkedList<Node5> list = table[index];
 		
 		if(list == null) {
-			list = new LinkedList<Node4>();
+			list = new LinkedList<Node5>();
 			table[index] = list;
 		}
 		
-		Node4 node = searchNode(list, key);
+		Node5 node = searchNode(list, key);
 		if(node == null) {
-			node = new Node4(key, value);
+			node = new Node5(key, value);
 			list.addLast(node);
 		}else {
 			node.setValue(value);
@@ -51,10 +51,8 @@ public class HashTable4 {
 	}
 	
 	public String get(String key) {
-		LinkedList<Node4> list = table[convertToIndex(getHashCode(key))];
-		
-		Node4 node = searchNode(list, key);
-		return node == null? "Not found" : node.getValue();
-		
+		LinkedList<Node5> list = table[convertToIndex(getHashCode(key))];
+		Node5 node = searchNode(list, key);
+		return node == null? "Not Found" : node.getValue();
 	}
 }
