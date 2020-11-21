@@ -1,6 +1,6 @@
 package codingTest.sort.selectionSort;
 
-public class Selection13 {
+public class SelectionSort19 {
 	
 	public static void selectionSort(int[] arr, int start) {
 		if(start < arr.length-1) {
