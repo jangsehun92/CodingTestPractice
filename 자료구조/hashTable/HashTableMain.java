@@ -1,12 +1,12 @@
 package codingTest.자료구조.hashTable;
 
-import codingTest.자료구조.hashTable.day8.HashTable8;
+import codingTest.자료구조.hashTable.day9.HashTable9;
 
 public class HashTableMain {
 	
 	public static void main(String[] args) {
 		//HashTable h = new HashTable(5);
-		HashTable8 h = new HashTable8(5);
+		HashTable9 h = new HashTable9(5);
 		h.put("sung", "예쁘다 ");
 		h.put("jin", "모델이다");
 		h.put("hee", "천사다");
