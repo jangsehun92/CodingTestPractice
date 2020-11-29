@@ -1,5 +1,8 @@
 package codingTest.sort.util;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 public class Util {
 	
 	public void swap(int[] arr, int left, int right) {
@@ -9,9 +12,8 @@ public class Util {
 	}
 	
 	public void print(int[] arr) {
-		for(int data : arr) {
-			System.out.print(data + ", ");
-		}
+		IntStream intStream = Arrays.stream(arr);
+		intStream.forEach(data -> System.out.print(data+", "));
 		System.out.println();
 	}
 	
